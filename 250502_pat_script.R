@@ -451,14 +451,7 @@ trans[!trans %in% unique(cred_fin_noneur[which(cred_fin_noneur$transferred=="Yes
 
 ##Power Adjusted Transferability (PAT) ratio calculation
 
-
 cred_fin_noneur[which(cred_fin_noneur$Lead_Proxy),]
-
-loci <- fread("GWAS_EUR_published.txt") #list of GWAS significant loci in EUR
-afr <- fread("EUR_loci_transferability_AFR_final.txt") #transferablity result with all SNPs available in African sumstats
-
-afr <- afr[afr$Locus %in% loci$Locus,] #only keep loci available in both Africans and Europeans
-
 
 max_power <- aggregate(power ~ Locus, data = cred_fin_noneur, max) #retrive SNP with maximum power in each locus
 expected<-sum(max_power$power) #sum of maximum power in each locus: this is the expected number of transferable loci
